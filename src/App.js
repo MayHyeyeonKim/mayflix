@@ -5,6 +5,16 @@ import Homepage from './pages/Homepage/Homepage';
 import MoviePage from './pages/Moives/MoviePage';
 import MovieDetailPage from './pages/MovieDetail/MovieDetailPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import styled from 'styled-components';
+
+const AppContainer = styled.div`
+  background-color: black;  /* 배경색을 검은색으로 설정 */
+  color: white;  /* 텍스트 색상을 흰색으로 설정 */
+  min-height: 100vh;  /* 화면 전체 높이를 커버 */
+`
 
 //홈페이지
 //영화 전체보여주는 페이지(서치) /movies
@@ -14,17 +24,21 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 function App() {
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<AppLayout />}>
-        {/* user 화면 */}
-          <Route index element={<Homepage/>}/>
-          <Route path="movies">
-            <Route index element={<MoviePage/>}/>
-            <Route path=":id" element={<MovieDetailPage/>}/>
+      <AppContainer>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path="/" element={<AppLayout />}>
+          {/* user 화면 */}
+            <Route index element={<Homepage/>}/>
+            <Route path="movies">
+              <Route index element={<MoviePage/>}/>
+              <Route path=":id" element={<MovieDetailPage/>}/>
+            </Route>
           </Route>
-        </Route>
-        <Route path="*" element={<NotFoundPage/>}/>
-      </Routes>
+          <Route path="*" element={<NotFoundPage/>}/>
+        </Routes>
+      </ThemeProvider>
+      </AppContainer>
     </div>
   );
 }

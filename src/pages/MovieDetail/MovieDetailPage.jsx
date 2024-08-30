@@ -1,8 +1,8 @@
 const MovieDetailPage = () => {
     return (
-        <div>
+        <h1>
             MovieDetailPage
-        </div>
+        </h1>
     )
 }
 
