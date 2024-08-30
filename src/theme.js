@@ -4,9 +4,9 @@ export const theme = {
     colors: {
       primary: '#007bff',
       secondary: '#6c757d',
-      background: '#f8f9fa',
-      text: '#212529',
-      overlay: 'rgba(0, 0, 0, 0.2)',
+      background: 'black',
+      text: 'grey',
+      overlay: 'rgba(0, 0, 0, 0.1)',
     },
     fonts: {
       main: "'Noto Sans', sans-serif",  // 기본 폰트
