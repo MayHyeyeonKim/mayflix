@@ -1,4 +1,8 @@
 [build]
-base = "" # 기본 루트 디렉토리, 필요에 따라 경로 수정
-publish = "build" # 빌드 후 결과물을 업로드할 디렉토리 (CRA에서는 'build' 사용)
-command = "npm run build" # 빌드 명령어
+command = "npm run build"
+publish = "build"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
