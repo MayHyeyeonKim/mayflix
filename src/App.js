@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import AppLayout from './layout/AppLayout';
 import Homepage from './pages/Homepage/Homepage';
-import MoviePage from './pages/Moives/MoviePage';
+import MoviePage from './pages/Movies/MoviePage';
 import MovieDetailPage from './pages/MovieDetail/MovieDetailPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { ThemeProvider } from 'styled-components';
