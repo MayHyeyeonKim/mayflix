@@ -1,0 +1,55 @@
+.title {
+    font-size: 40px;
+}
+
+.overview {
+    font-size: 24px;
+}
+
+.banner {
+    height: 56vh; /* 배너의 높이를 뷰포트 높이의 56%로 설정 */
+    background-position: center; /* 배경 이미지의 중심을 배너의 중심에 맞춤 */
+    background-repeat: no-repeat; /* 배경 이미지가 반복되지 않도록 설정 */
+    background-size: cover; /* 배경 이미지가 배너의 크기에 맞게 확장 또는 축소되도록 설정 */
+    position: relative; /* 가상 요소(:before)가 배너를 기준으로 위치하도록 설정 */
+}
+
+.banner:before {
+    content: ''; /* 가상 요소가 화면에 나타나도록 빈 문자열을 설정 */
+    background: linear-gradient(to top, black, transparent); /* 그라데이션 배경 설정 */
+    position: absolute; /* 배너를 기준으로 절대 위치를 설정 */
+    top: 0; /* 가상 요소의 상단을 배너의 상단에 맞춤 */
+    left: 0; /* 가상 요소의 왼쪽을 배너의 왼쪽에 맞춤 */
+    width: 100%; /* 가상 요소의 너비를 배너의 너비와 동일하게 설정 */
+    height: 100%; /* 가상 요소의 높이를 배너의 높이와 동일하게 설정 */
+    z-index: 1; /* 가상 요소가 배경 이미지 위에 표시되도록 설정 */
+}
+
+.banner-text-area {
+    width: 36%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+
+    .banner {
+        height: 70vh; /* 모바일에서 배너 높이 조정 */
+    }
+
+    .banner-text-area {
+        width: 80%; /* 모바일에서 텍스트 영역의 너비를 더 넓게 설정 */
+        padding: 10px; /* 모바일에서 패딩을 줄여 더 컴팩트하게 */
+    }
+
+    .banner-text-area h1 {
+        font-size: 1.5rem; /* 모바일에서 h1 텍스트 크기를 줄임 */
+    }
+
+    .banner-text-area p {
+        font-size: 0.875rem; /* 모바일에서 p 텍스트 크기를 줄임 */
+    }
+}
