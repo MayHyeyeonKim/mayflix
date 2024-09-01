@@ -2,7 +2,6 @@ import { usePopularMoviewsQuery } from "../../../../hooks/usePopularMovies";
 import Spinner from 'react-bootstrap/Spinner';
 import Alert from 'react-bootstrap/Alert';
 import './Banner.style.css';
-import { useEffect, useState } from "react";
 
 const Banner = () => {
     const { data, isLoading, isError, error } = usePopularMoviewsQuery();
