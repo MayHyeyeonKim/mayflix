@@ -6,15 +6,15 @@ import { useEffect, useState } from "react";
 
 const Banner = () => {
     const { data, isLoading, isError, error } = usePopularMoviewsQuery();
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    // const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         setIsMobile(window.innerWidth < 768);
+    //     };
+    //     window.addEventListener('resize', handleResize);
+    //     return () => window.removeEventListener('resize', handleResize);
+    // }, []);
 
     // 로딩 상태일 때 로딩 스피너를 표시
     if (isLoading) {
@@ -24,6 +24,8 @@ const Banner = () => {
             </Spinner>
         );
     }
+    const popularMovies = data.results.filter(movie => movie.vote_average >= 6);
+    const movie = popularMovies[0];
 
     // 에러 상태일 때 에러 메시지를 표시
     if (isError) {
@@ -36,12 +38,14 @@ const Banner = () => {
     }
 
     // 모바일 또는 데스크톱에 맞는 배너 이미지 설정
-    const bannerImage = isMobile
-        ? `url(https://media.themoviedb.org/t/p/w300${data?.results[0].poster_path})`
-        : `url(https://media.themoviedb.org/t/p/w533_and_h300_bestv2${data?.results[0].poster_path})`;
+    // const bannerImage = isMobile
+    //     ? `url(https://media.themoviedb.org/t/p/w300${data?.results[0].poster_path})`
+    //     : `url(https://media.themoviedb.org/t/p/w533_and_h300_bestv2${data?.results[0].poster_path})`;
+    const imageUrl = `https://www.themoviedb.org/t/p/original${movie.backdrop_path}`;
+
 
     return (
-        <div style={{ backgroundImage: bannerImage }} className="banner">
+        <div style={{ backgroundImage: `url(${imageUrl})` }} className="banner">
             <div className="text-white banner-text-area">
                 <h1 className='title'>{data?.results[0].title}</h1>
                 <p className='overview'>{data?.results[0].overview}</p>
