@@ -3,15 +3,14 @@ import axios from "axios";
 const API_KEY = process.env.REACT_APP_API_KEY; // 환경 변수에서 API 키 가져오기
 
 const api = axios.create({
-    baseURL: '/', // 프록시 설정에 의해 올바른 경로로 라우팅
-    params: {
-        api_key: API_KEY,
-    },
+    baseURL: '/',
     headers: {
         Accept: 'application/json',
+        Authorization: `Bearer ${API_KEY}` // API 키를 Bearer 토큰으로 설정
     }
 });
 
+// 응답 인터셉터 설정
 api.interceptors.response.use(
     function (response) {
         return response;
@@ -23,3 +22,12 @@ api.interceptors.response.use(
 );
 
 export default api;
+
+// API 호출 예시
+api.get('/movie/popular')
+    .then(response => {
+        console.log('API 데이터:', response.data);
+    })
+    .catch(error => {
+        console.error('Error fetching popular movies:', error);
+    });
