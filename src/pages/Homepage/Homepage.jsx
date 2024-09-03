@@ -5,13 +5,17 @@
 
 import Banner from "./components/Banner/Banner";
 import PopularMovieSlide from "./components/PopularMovieSlide/PopularMovieSlide";
+import TopRatedMovieSlide from "./components/TopRatedMovieSlide/TopRatedMovieSlide";
+import UpcomingMovieSlide from "./components/UpcomingMoviesSlide/UpcomingMoviesSlide";
 
 const Homepage = () => {
     return (
         <h1>
             <div>
             <Banner/>
-            <PopularMovieSlide/>
+            <PopularMovieSlide />
+            <TopRatedMovieSlide />
+            <UpcomingMovieSlide />
             </div>
         </h1>
     )
