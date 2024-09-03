@@ -49,13 +49,21 @@ const StyledButton = styled(Button)`
   padding: 0;  /* 내부 여백 제거 */
 `;
 
+const StyledNavbarToggle = styled(Navbar.Toggle)`
+  border-color: red !important; /* 테두리 색상 변경 */
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='red' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+`;
+
 const AppLayout = () => {
     return (
        <div>
          <Navbar expand="lg" className="px-5 bg-black navbar navbar-expand-lg navbar-light">
           <Container fluid>
             <StyledNavbarBrand href="/"> MayFlix</StyledNavbarBrand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
+            <StyledNavbarToggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
                 className="me-auto my-2 my-lg-0"
