@@ -5,6 +5,8 @@
     cursor: pointer;
     transition: 0.2s;
     border-radius: 3px;
+    /* position: relative; */
+
 }
 
 .overlay{
@@ -44,3 +46,15 @@
     transform: scale(1.1) translateZ(10px);
     z-index: 2;
 }
+
+@media (max-width: 480px) { /* 모바일 대응 */
+    .movie-card {
+      width: 120px; /* 모바일에 맞는 너비 */
+      height: 180px; /* 모바일에 맞는 높이 */
+    }
+  
+    .overlay {
+      font-size: 10px; /* 더 작은 글씨 크기 */
+      padding: 5px; /* 내부 여백 축소 */
+    }
+  }
