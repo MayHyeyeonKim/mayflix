@@ -4,12 +4,14 @@
 //upcoming movie
 
 import Banner from "./components/Banner/Banner";
+import PopularMovieSlide from "./components/PopularMovieSlide/PopularMovieSlide";
 
 const Homepage = () => {
     return (
         <h1>
             <div>
             <Banner/>
+            <PopularMovieSlide/>
             </div>
         </h1>
     )
