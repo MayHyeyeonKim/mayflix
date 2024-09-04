@@ -4,10 +4,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MovieCard = ({movie}) => {
 const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}?api_key=${API_KEY}`;
-console.log("Poster URL with API Key: ", posterUrl);
 
-
-    
     return (
     <div 
     style={{backgroundImage: "url("+`https://image.tmdb.org/t/p/w500${movie.poster_path}?api_key=${API_KEY}`+")"}}
@@ -22,7 +19,6 @@ console.log("Poster URL with API Key: ", posterUrl);
         </div>
         </div>
     </div>
-    
     );
 }
 

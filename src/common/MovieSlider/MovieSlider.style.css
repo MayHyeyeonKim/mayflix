@@ -1,0 +1,26 @@
+.carousel-container{
+    overflow: hidden;
+    height: 440px;
+}
+
+.carousel-container {
+  width: 100%; /* 컨테이너의 너비 설정 */
+  margin: auto;
+}
+
+.movie-slider {
+  margin: 0 100px; /* 각 영화 카드 사이의 간격 조정 */
+}
+
+
+@media (max-width:480px) {
+    .carousel-container{
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .movie-slider {
+        margin: 0 10px; /* 각 영화 카드 사이의 간격 조정 */
+      }
+      
+}

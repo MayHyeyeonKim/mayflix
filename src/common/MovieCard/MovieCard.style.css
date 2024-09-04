@@ -4,7 +4,8 @@
     background-size: cover;
     cursor: pointer;
     transition: 0.2s;
-    border-radius: 3px;
+    border-radius: 30px;
+    margin: 5px;
     /* position: relative; */
 
 }
@@ -25,10 +26,12 @@
     box-sizing: border-box; /* 패딩 포함 */
     text-align: center; /* 텍스트 가운데 정렬 */
     backdrop-filter: blur(5px); /* 블러 효과 */
+    border-radius: 30px;
 }
 
 .overlay h2 {
     font-size: 20px; /* 제목 크기 */
+    margin-top: 40px;
     margin-bottom: 10px; /* 아래쪽 여백 */
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* 텍스트 그림자 */
 }
@@ -47,14 +50,45 @@
     z-index: 2;
 }
 
-@media (max-width: 480px) { /* 모바일 대응 */
+/* 모바일 대응 */
+@media (max-width: 480px) { 
     .movie-card {
-      width: 120px; /* 모바일에 맞는 너비 */
-      height: 180px; /* 모바일에 맞는 높이 */
+      width: 220px;
+      height: 280px;
+      margin: 10px; /* 카드 사이 여백 추가 */
     }
   
     .overlay {
-      font-size: 10px; /* 더 작은 글씨 크기 */
-      padding: 5px; /* 내부 여백 축소 */
+      font-size: 10px;
+      padding: 5px;
     }
   }
+  
+  /* 테블릿 대응 */
+  @media (min-width: 481px) and (max-width: 900px){
+    .movie-card {
+      width: 450px;
+      height: 420px;
+      margin: 15px; /* 카드 사이 여백 추가 */
+    }
+  
+    .overlay {
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+  
+  /* 데스크탑 대응 */
+  @media (min-width: 900px) {
+    .movie-card {
+      width: 450px;
+      height: 320px;
+      margin: 20px; /* 카드 사이 여백 추가 */
+    }
+  
+    .overlay {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  
