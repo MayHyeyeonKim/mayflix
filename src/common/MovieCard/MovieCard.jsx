@@ -7,6 +7,7 @@ const MovieCard = ({movie}) => {
 const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}?api_key=${API_KEY}`;
 const { data:genreData } = useMovieGenreQuery()
 console.log("ggg: ", genreData)
+
 const showGenre = (genreIdList) => {
     if(!genreData) return []
     const genreNameList = genreIdList.map((id)=>{

@@ -1,9 +1,10 @@
+import {useState} from "react"
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Outlet } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -58,6 +59,13 @@ const StyledNavbarToggle = styled(Navbar.Toggle)`
 `;
 
 const AppLayout = () => {
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate()
+  const searchByKeyword = (event)=>{
+    event.preventDefault()
+    navigate(`/movies?q=${keyword}`)
+    setKeyword("")
+  }
     return (
        <div>
          <Navbar expand="lg" className="px-5 bg-black navbar navbar-expand-lg navbar-light">
@@ -74,12 +82,14 @@ const AppLayout = () => {
                 <StyledNavLink href="/movies">Movies</StyledNavLink>
               </Nav>
 
-              <StyledForm className="d-flex">
+              <StyledForm className="d-flex" onSubmit={searchByKeyword}>
                 <StyledFormControl
                   type="search"
                   placeholder="Search"
                   className="me-2"
                   aria-label="Search"
+                  value = {keyword}
+                  onChange={(event)=> setKeyword(event.target.value)}
                 />
                 <StyledButton>
                     <FaSearch style={{ color: "red", margin: "0.1rem", fontSize: '1.2rem' }} />
