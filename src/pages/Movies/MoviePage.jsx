@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
@@ -21,6 +21,10 @@ const MoviePage = () => {
   };
 
   console.log("여기는 MoviePage의 data", data);
+
+  useEffect(()=>{
+    setPage(1)
+  },[keyword])
 
   return (
     <Container>

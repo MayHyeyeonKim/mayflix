@@ -7,15 +7,18 @@ import Banner from "./components/Banner/Banner";
 import PopularMovieSlide from "./components/PopularMovieSlide/PopularMovieSlide";
 import TopRatedMovieSlide from "./components/TopRatedMovieSlide/TopRatedMovieSlide";
 import UpcomingMovieSlide from "./components/UpcomingMoviesSlide/UpcomingMoviesSlide";
+import './Homepage.style.css'
 
 const Homepage = () => {
     return (
         <h1>
             <div>
             <Banner/>
-            <PopularMovieSlide />
-            <TopRatedMovieSlide />
-            <UpcomingMovieSlide />
+            <div className="movie-slide-container">
+                <PopularMovieSlide />
+                <TopRatedMovieSlide />
+                <UpcomingMovieSlide />
+            </div>
             </div>
         </h1>
     )
