@@ -1,13 +1,13 @@
 .movie-card{
-    width: 300px !important;
-    height: 430px !important;
+    width: 280px !important;
+    height: 400px !important;
     background-size: cover;
     cursor: pointer;
     transition: 0.2s;
     border-radius: 30px;
-    margin: 15px !important;
-    /* position: relative; */
-
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .overlay{
@@ -21,74 +21,42 @@
     color: white;
     font-weight: bold;
     overflow-wrap: break-word;
-    font-size: 15px;
-    padding: 20px; /* 내부 여백 추가 */
+    font-size: 12px;
     box-sizing: border-box; /* 패딩 포함 */
     text-align: center; /* 텍스트 가운데 정렬 */
     backdrop-filter: blur(5px); /* 블러 효과 */
     border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 10px;
 }
 
 .overlay h2 {
     font-size: 20px; /* 제목 크기 */
-    margin-top: 40px;
-    margin-bottom: 10px; /* 아래쪽 여백 */
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* 텍스트 그림자 */
 }
 
-.overlay > div { /*딱 overlay의 바로 아래 자식만*/
-    align-self: flex-end;
-    margin: 50px 0; /* 각 아이템 간격 */
-}
 
 .overlay:hover {
     opacity: 1; /* 마우스 호버 시 보이도록 */
 }
 
 .movie-card:hover{
-    transform: scale(1.1) translateZ(10px);
+    transform: scale(1.05) translateZ(9px);
     z-index: 2;
 }
 
-/* 모바일 대응 */
-@media (max-width: 480px) { 
-    .movie-card {
-      width: 220px;
-      height: 280px;
-      margin: 10px; /* 카드 사이 여백 추가 */
-    }
-  
-    .overlay {
-      font-size: 10px;
-      padding: 5px;
-    }
-  }
-  
-  /* 테블릿 대응 */
-  @media (min-width: 481px) and (max-width: 900px){
-    .movie-card {
-      width: 450px;
-      height: 420px;
-      margin: 15px; /* 카드 사이 여백 추가 */
-    }
-  
-    .overlay {
-      font-size: 12px;
-      padding: 8px;
-    }
-  }
-  
-  /* 데스크탑 대응 */
-  @media (min-width: 900px) {
-    .movie-card {
-      width: 450px;
-      height: 320px;
-      margin: 20px; /* 카드 사이 여백 추가 */
-    }
-  
-    .overlay {
-      font-size: 14px;
-      padding: 10px;
-    }
-  }
-  
+.genre-container{
+  display: flex;
+  gap: 2px;
+  /* flex-direction: column; */
+  justify-content: center;
+}
+
+.rat-pop-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}

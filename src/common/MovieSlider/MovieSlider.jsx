@@ -7,10 +7,10 @@ import "react-multi-carousel/lib/styles.css"
 const MovieSlider = ({title, movies, responsive}) => {
     return (
         <div>
-      <h3>{title}</h3>
+      <h3 className="movie-slider-title">{title}</h3>
       <Carousel
        infinite={true}
-       centerMode={true}
+       centerMode={false}
        itemClass="movie-slider p-1"
        containerClass="carousel-container"
        responsive={responsive}

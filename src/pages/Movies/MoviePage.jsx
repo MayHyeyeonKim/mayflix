@@ -30,12 +30,11 @@ const MoviePage = () => {
     <Container>
       <Row>
         <Col lg={8} xs={12}>
-          {/* Row에 g-0 클래스를 적용하여 Bootstrap 기본 gutter를 제거하고 직접 마진 설정 */}
-          <Row className="g-0 custom-row"> {/* g-0으로 Bootstrap의 기본 간격 제거 */}
+          <Row className="g-0 custom-row"> 
             {isLoading ? (
-              <p>검색 하기</p> // 로딩 중일 때 표시할 메시지
+              <p>검색 하기</p> 
             ) : data && data.results.length === 0 ? (
-              <p>검색 결과가 없습니다.</p> // 검색 결과가 없을 때 표시할 메시지
+              <p>검색 결과가 없습니다.</p> 
             ) : (
               data?.results.map((movie, index) => (
                 <Col key={index} lg={3} md={6} xs={12}>

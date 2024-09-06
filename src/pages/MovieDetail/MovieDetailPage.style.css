@@ -1,0 +1,167 @@
+.movie-detail-banner {
+  position: relative;
+  z-index: 100;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 800px;
+  margin: 0 auto;
+}
+
+.movie-detail-img{
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  width: 85vw;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.banner-detail-area {
+  bottom:0;
+  left: 10%;
+  position: absolute; 
+  z-index: 100;
+  color: white;
+  /* background-color: #f9bc13; */
+}
+
+.detail-page-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1240px;
+  /* margin: 0 auto; */
+  min-height: 100vh;
+}
+
+.movie-detail-banner .banner-text-area {
+  /* position: absolute; */
+  /* color: #fff; */
+  /* width: 50%; */
+}
+
+.movie-detail-banner .banner-text-area h1 {
+  /* margin-bottom: 10px; */
+}
+
+.movie-detail-info {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.movie-detail-info p {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.movie-genre {
+  margin: 0 0 10px;
+}
+
+.detail-age {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.movie-detail-info .movie-genre {
+  margin: 0;
+}
+
+  
+  .play-button .btn {
+    height: 48px;
+    padding: 0 20px;
+  }
+  
+  .btn-play {
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+  }
+  
+  .bottom-contents {
+    margin-top: 40px;
+    z-index: 20;
+  }
+  
+  .bottom-contents .content-nav {
+    margin-bottom: 40px;
+  }
+  
+  .content-nav {
+    overflow: hidden;
+    width: 1240px;
+    margin: 0 auto 20px;
+  }
+  
+  .content-nav ul {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #2f2f2f;
+    font-size: 0;
+  }
+  
+  .content-nav ul li {
+    vertical-align: middle;
+  }
+  
+  .content-nav ul li + li {
+    margin-left: 20px;
+  }
+  
+  .content-nav ul li button {
+    display: inline-block;
+    padding: 0 10px;
+    border-bottom: 4px solid transparent;
+    font-size: 18px;
+    color: #a5a5a5;
+    line-height: 63px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .content-nav ul li button.on {
+    border-bottom-color: #f9bc13;
+    color: #fff;
+  }
+  
+  .show-more-button {
+    text-decoration: none;
+    color: #f9bc13;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .show-more-button:hover {
+    color: #f9bc13;
+  }
+  
+  /* 반응형 */
+  /* 768px 이하 */
+  @media screen and (max-width: 768px) {
+    .movie-detail-info,
+    .movie-genre {
+      display: none;
+    }
+  
+    .play-button .btn {
+      height: 30px;
+      padding: 0 20px;
+      font-size: 12px;
+    }
+  }
+  
