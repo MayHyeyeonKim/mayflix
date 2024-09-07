@@ -5,17 +5,21 @@ import { Badge, Button } from "react-bootstrap";
 import "./MovieDetailPage.style.css";
 import PreviewModal from "./components/PreviewModal";
 import useMovieReviewQuery from "../../hooks/useMovieReviewQuery";
-
+import useMovieRecommendations from "../../hooks/useMovieRecommendations"
+import MovieSlider from "../../common/MovieSlider/MovieSlider"
+import {responsive} from "../../constants/responsive"
 const MovieDetailPage = () => {
   const menuList = ["상세정보", "추천", "리뷰"];
   const [expandedIndex, setExpandedIndex] = useState(null); // For tracking the expanded review
   const { id } = useParams();
   const { data, isLoading, error } = useMovieDetailQuery(id);
   const { data: ReviewDatas } = useMovieReviewQuery(id);
-
+  const { data: RecoDatas } = useMovieRecommendations(id);
   const [modalShow, setModalShow] = useState(false);
   const [activeMenu, setActiveMenu] = useState("상세정보");
   const reff = useRef(null);
+
+  console.log("recooooo:", RecoDatas)
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error fetching movie details</p>;
@@ -93,24 +97,23 @@ const MovieDetailPage = () => {
 
         {/* Reviews Section */}
         <div className="bottom-contents">
-          {ReviewDatas.results.map((result, index) => (
-            <div key={index}>
-              <button className="accordion" onClick={() => handleReview(index)}>
-                {result.author}
-              </button>
-              <p>
-                {/* If the review is expanded, show the full content, otherwise show a shortened version */}
-                {expandedIndex === index
-                  ? result.content
-                  : `${result.content.substring(0, 100)}...`} 
-              </p>
-              <button onClick={() => handleReview(index)}>
-                {expandedIndex === index ? "Show Less" : "Read More"}
-              </button>
-
-            </div>
+          <div>Reviews</div>
+          {ReviewDatas?.results?.map((result, index) => (
+              <div className="accordion" >
+              <div className={expandedIndex === index ? "accodion-inside2": "accodion-inside1"}> {result.content},{result.author}</div>
+                  <button onClick={() => handleReview(index)} className="accordion-btn">{expandedIndex === index ? "Show Less" : "Read More"}</button>
+              </div>
           ))}
         </div>
+
+        <div className="slider-style">
+  {RecoDatas?.results ? (
+    <MovieSlider movies={RecoDatas.results} title="recommend" responsive={responsive}/>
+  ) : (
+    <p>No recommendations available.</p> // 데이터가 없을 경우 메시지 표시
+  )}
+</div>
+
 
       </div>
       {modalShow && <PreviewModal id={id} setModalShow={setModalShow} />}

@@ -32,12 +32,15 @@
 }
 
 .detail-page-container{
+  align-items: center;
+  justify-content: center;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 1240px;
+  width: 100vw;
+  /* max-width: 1240px; */
   /* margin: 0 auto; */
   min-height: 100vh;
+  /* background-color: orange; */
 }
 
 .movie-detail-banner .banner-text-area {
@@ -94,6 +97,12 @@
   }
   
   .bottom-contents {
+    gap:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin: auto; */
     margin-top: 40px;
     z-index: 20;
   }
@@ -167,24 +176,46 @@
   
   /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-  background-color: #eee;
-  color: #444;
+  display: flex;
+  justify-content: center;
+  /* background-color: #444; */
+  border: 1px solid #f9bc13 ;
+  border-radius: 3px;
+  color: white;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
-  height: 70px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  word-wrap: break-word;
+  width: 90%;
   text-align: left;
-  border: none;
+  /* border: none; */
   outline: none;
   transition: 0.4s;
+}
+
+.accodion-inside1{
+  width: 70vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accodion-inside2{
+  width: 70vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.accordion-btn{
+  height: fit-content;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
   background-color: #ccc;
+}
+
+.button{
+  position: static;
 }
 
 /* Style the accordion panel. Note: hidden by default */
@@ -205,4 +236,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.slider-style{
+  opacity: 2;
 }

@@ -8,12 +8,13 @@
   
   .page-item {
     margin: 0 4px;
+    color: red;
   }
   
   .page-link {
     padding: 8px 12px;
     border: 1px solid #ddd;
-    color: red; /* 페이지 링크의 텍스트 색상을 빨간색으로 */
+    color: red !important;  /* 페이지 링크의 텍스트 색상을 빨간색으로 */
     cursor: pointer;
     border-radius: 4px;
   }
