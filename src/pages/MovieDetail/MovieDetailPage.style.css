@@ -239,5 +239,9 @@
 }
 
 .slider-style{
-  opacity: 2;
+  /* opacity: 2; */
+  height: 500px;
+  width: 100vw;
+  background-color: transparent;
+  color:#ccc
 }
