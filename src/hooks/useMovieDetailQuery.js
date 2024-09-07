@@ -9,7 +9,6 @@ const fetchMovieDetail = id => {
     })
 }
 
-
 const useMovieDetailQuery = id => {
     return useQuery({
         queryKey: ['movie-detail', id],
