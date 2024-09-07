@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Container, Row, Col, Dropdown, DropdownButton } from "react-bootstrap";
+import { Container, Row, Col, Dropdown, DropdownButton, Alert } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import "./MoviePage.style.css";
 
@@ -15,7 +15,7 @@ const MoviePage = () => {
   const [selectedSort, setSelectedSort] = useState("Most Popular")
 
   const keyword = query.get("q");
-  const genreId = query.get("genre")
+  const genreId = query.get("genre");
 
   const selectList = ["Most Popular", "Least Popular", "Latest", "Alphabetical"];
 
@@ -37,17 +37,11 @@ const MoviePage = () => {
   }
 
   const sortByGenre = (genreId, genreName) => {
-    console.log("여기는 장르");
-    const currentQuery = Object.fromEntries([...query]); // 현재 쿼리 파라미터를 가져옴
-    
     if (genreId === null) {
-      // 장르 필터 제거 (삭제)
-      const { genre, ...updatedQuery } = currentQuery;
-      setQuery(updatedQuery); // genre 파라미터를 제거한 새로운 쿼리 설정
+      setQuery({});
     } else {
-      setQuery({ ...currentQuery, genre: genreId }); // 기존 쿼리 유지하면서 genre 파라미터 추가
+      setQuery({ genre: genreId });
     }
-  
     setSelectedGenre(genreName);
     setPage(1);
   };
@@ -61,7 +55,7 @@ const MoviePage = () => {
   ? data?.results?.filter((movie) => movie.genre_ids.includes(parseInt(genreId, 10))) 
   : data?.results;
 
-  const sortedMovies = filteredMovies?.sort((a,b)=>{
+  const sortedMovies = filteredMovies?.sort((a, b) => {
     switch (selectedSort) {
       case "Most Popular":
         return b.popularity - a.popularity;
@@ -74,52 +68,64 @@ const MoviePage = () => {
       default:
         return 0;
     }
-  })
+  });
+
+  const renderMovies = (movies) => (
+    <Row>
+      {movies.map((movie, index) => (
+        <Col key={index} lg={3} md={4} sm={6} xs={12} className="mb-4">
+          <MovieCard movie={movie} />
+        </Col>
+      ))}
+    </Row>
+  );
 
   return (
     <Container>
-      <Row>
-        <Col lg={8} xs={12}>
-          <Row>
-
-            <Col>
+    <Row>
+      <Col lg={8} xs={12}>
+        <Row>
+          <Col>
             <DropdownButton id="genre-dropdown" title={selectedGenre} className="genre-dropdown">
-            <Dropdown.Item onClick={()=>sortByGenre(null, "Genre")}>
-                All
-            </Dropdown.Item>
-            {genreData?.map((genre)=>(
-              <Dropdown.Item key={genre.id} onClick={()=>sortByGenre(genre.id, genre.name)}>
-                {genre.name}
-              </Dropdown.Item>
-            ))}
-          </DropdownButton>
-            </Col>
-            <Col>
-            <DropdownButton id="sort-dropdown" title={selectedSort} onSelect={handleSort} className="sort-dropdown">
-            {selectList.map((item, index)=>(
-              <Dropdown.Item key={index} eventKey={item}>
-                {item}
-              </Dropdown.Item>
-            ))}
-          </DropdownButton>
+              <Dropdown.Item onClick={() => sortByGenre(null, "Genre")}>All</Dropdown.Item>
+              {genreData?.map((genre) => (
+                <Dropdown.Item key={genre.id} onClick={() => sortByGenre(genre.id, genre.name)}>
+                  {genre.name}
+                </Dropdown.Item>
+              ))}
+            </DropdownButton>
           </Col>
-
-          </Row>
-          <Row className="g-0 custom-row"> 
+          <Col className="d-flex justify-content-end">
+            <DropdownButton id="sort-dropdown" title={selectedSort} onSelect={handleSort} className="sort-dropdown">
+              {selectList.map((item, index) => (
+                <Dropdown.Item key={index} eventKey={item}>
+                  {item}
+                </Dropdown.Item>
+              ))}
+            </DropdownButton>
+          </Col>
+        </Row>
+  
+        <Row className="movie-grid">
+          <Col lg={12}>
             {isLoading ? (
-              <p>검색 하기</p> 
-            ) : data && data.results.length === 0 ? (
-              <p>검색 결과가 없습니다.</p> 
+              <p>검색 하기</p>
+            ) : sortedMovies?.length === 0 ? (
+              <>
+                <Alert variant="info" className="text-center p-5 mb-4">
+                  <h4 className="alert-heading">Sorry, there is no result of your search.</h4>
+                  <p className="mb-0">Please try different keywords or check out our popular movies below.</p>
+                </Alert>
+                <h3 className="text-white mb-4">Popular Movies</h3>
+                {renderMovies(data?.results.slice(0, 8) || [])} {/* 인기 영화 8개만 렌더링 */}
+              </>
             ) : (
-              data?.results.map((movie, index) => (
-                <Col key={index} lg={3} md={6} xs={12}>
-                    <MovieCard movie={movie} />
-                </Col>
-              ))
+              renderMovies(sortedMovies || []) // 검색된 영화 목록 또는 정렬된 영화 목록 렌더링
             )}
-          </Row>
-
-
+          </Col>
+        </Row>
+  
+        <Row style={{ margin: "20px" }}>
           <ReactPaginate
             nextLabel="next >"
             onPageChange={handlePageClick}
@@ -141,9 +147,11 @@ const MoviePage = () => {
             renderOnZeroPageCount={null}
             forcePage={page - 1}
           />
-        </Col>
-      </Row>
-    </Container>
+        </Row>
+      </Col>
+    </Row>
+  </Container>
+  
   );
 };
 
